@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura — Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="Aura_files/2.png" alt="Aura Logo" class="logo-img">
+        </a>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="distributor.html">Become a Distributor</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h1>Our Products</h1>
+
+        <div class="filters">
+            <select id="filter-brand">
+                <option value="all">All Brands</option>
+                <option value="aura">Aura</option>
+                <option value="glowlab">Auralab</option>
+                <option value="puretouch">AuraTouch</option>
+            </select>
+            <select id="filter-size">
+                <option value="all">All Sizes</option>
+                <option value="small">Small (50ml)</option>
+                <option value="medium">Medium (100ml)</option>
+                <option value="large">Large (200ml)</option>
+            </select>
+            <select id="filter-type">
+                <option value="all">All Types</option>
+                <option value="skincare">Skincare</option>
+                <option value="makeup">Makeup</option>
+                <option value="haircare">Haircare</option>
+                <option value="fragrance">Fragrance</option>
+            </select>
+            <select id="filter-price">
+                <option value="all">All Prices</option>
+                <option value="low">Under R150</option>
+                <option value="mid">R150 – R300</option>
+                <option value="high">Above R300</option>
+            </select>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <div class="product-card" data-brand="aura" data-size="small" data-type="skincare" data-price="low">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Hydrating Serum</h3>
+                <p class="brand">Aura</p>
+                <p class="price">R129.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Hydrating Serum"> Select</label>
+            </div>
+            <div class="product-card" data-brand="glowlab" data-size="medium" data-type="makeup" data-price="mid">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Matte Foundation</h3>
+                <p class="brand">Auralab</p>
+                <p class="price">R199.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Matte Foundation"> Select</label>
+            </div>
+            <div class="product-card" data-brand="puretouch" data-size="large" data-type="haircare" data-price="high">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Argan Oil Shampoo</h3>
+                <p class="brand">AuraTouch</p>
+                <p class="price">R349.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Argan Oil Shampoo"> Select</label>
+            </div>
+            <div class="product-card" data-brand="aura" data-size="small" data-type="fragrance" data-price="low">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Rose Mist</h3>
+                <p class="brand">Aura</p>
+                <p class="price">R89.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Rose Mist"> Select</label>
+            </div>
+            <div class="product-card" data-brand="glowlab" data-size="medium" data-type="skincare" data-price="mid">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Vitamin C Cream</h3>
+                <p class="brand">Auralab</p>
+                <p class="price">R249.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Vitamin C Cream"> Select</label>
+            </div>
+            <div class="product-card" data-brand="puretouch" data-size="large" data-type="makeup" data-price="high">
+                <div class="product-img placeholder">Product Image</div>
+                <h3>Premium Palette</h3>
+                <p class="brand">AuraTouch</p>
+                <p class="price">R399.99</p>
+                <label><input type="checkbox" class="select-product" data-name="Premium Palette"> Select</label>
+            </div>
+        </div>
+
+        <div class="whatsapp-section">
+            <p id="selected-count">0 products selected</p>
+            <button class="btn-whatsapp" onclick="sendWhatsApp()">📱 Order via WhatsApp</button>
+            <p class="hint">Replace the number in the code with your business WhatsApp number.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aura Beauty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const filters = {
+            brand: document.getElementById('filter-brand'),
+            size: document.getElementById('filter-size'),
+            type: document.getElementById('filter-type'),
+            price: document.getElementById('filter-price')
+        };
+
+        function filterProducts() {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const matchBrand = filters.brand.value === 'all' || card.dataset.brand === filters.brand.value;
+                const matchSize = filters.size.value === 'all' || card.dataset.size === filters.size.value;
+                const matchType = filters.type.value === 'all' || card.dataset.type === filters.type.value;
+                const matchPrice = filters.price.value === 'all' || card.dataset.price === filters.price.value;
+                card.style.display = (matchBrand && matchSize && matchType && matchPrice) ? 'block' : 'none';
+            });
+        }
+
+        Object.values(filters).forEach(f => f.addEventListener('change', filterProducts));
+
+        function updateCount() {
+            const checked = document.querySelectorAll('.select-product:checked');
+            document.getElementById('selected-count').textContent = checked.length + ' product(s) selected';
+        }
+        document.querySelectorAll('.select-product').forEach(cb => cb.addEventListener('change', updateCount));
+
+        function sendWhatsApp() {
+            const checked = document.querySelectorAll('.select-product:checked');
+            if (checked.length === 0) {
+                alert('Please select at least one product.');
+                return;
+            }
+            const items = Array.from(checked).map(cb => '• ' + cb.dataset.name).join('%0A');
+            const message = 'Hello Aura! I would like to order the following products:%0A%0A' + items;
+            const phone = '27732020850'; // ← REPLACE WITH YOUR WHATSAPP NUMBER
+            window.open('https://wa.me/' + phone + '?text=' + message, '_blank');
+        }
+    </script>
+</body>
+</html>

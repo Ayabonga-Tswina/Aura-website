@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura — Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="Aura_files/2.png" alt="Aura Logo" class="logo-img">
+        </a>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="distributor.html">Become a Distributor</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="form-card">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="cname">Your Name</label>
+                    <input type="text" id="cname" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="cemail">Email Address</label>
+                    <input type="email" id="cemail" name="email" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="csubject">Subject</label>
+                    <input type="text" id="csubject" name="subject" required placeholder="How can we help?">
+                </div>
+                <div class="form-group">
+                    <label for="cmessage">Message</label>
+                    <textarea id="cmessage" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <p><strong>Email:</strong> info@aurabeauty.co.za</p>
+                <p><strong>Phone:</strong> +27 73 202 0850</p>
+                <p><strong>Address:</strong> King William Town, South Africa</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Aura Beauty. All rights reserved.</p>
+    </footer>
+</body>
+</html>
