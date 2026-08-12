@@ -2,7 +2,7 @@
     --primary: #a2700b;
     --primary-dark: #d2a730;
     --accent: hsl(35, 81%, 85%);
-    --bg: hsl(5, 17%, 59%);
+    --bg: url(Landscape\ BG.png);
     --card: #ffffff;
     --text: #333333;
     --text-light: #666666;
@@ -117,7 +117,7 @@ body {
 
 /* Hero */
 .hero {
-    background: linear-gradient(135deg, var(--accent) 0%, #fce4ec 100%);
+    background: transparent;
     padding: 6rem 3rem;
     text-align: center;
 }
